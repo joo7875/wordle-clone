@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     createSquares();
 
+    const GRAY = 'gray';
+    const YELLOW = 'rgb(181, 159, 59)';
+    const GREEN = 'rgb(83, 141, 78)';
+
     let stack = [[]];
     let availableSpace = 1;
 
@@ -51,35 +55,37 @@ document.addEventListener('DOMContentLoaded', () => {
         // index 0 1 2 3 4
         const include = WORD.includes(letter);
 
-        if (!include) return 'lightgray';
-        if (WORD[index] === letter) return 'rgb(83, 141, 78)'; // green
+        if (!include) return GRAY;
+        if (WORD[index] === letter) return GREEN;
         
-        return 'rgb(181, 159, 59)'; // yellow
+        return YELLOW;
     }
 
     // enter
     function handleSubmit() {
         const curArr = getCurWordArr();
+        const curWord = curArr.join('');
 
         if (curArr.length !== 5) {
             window.alert('Word must be 5 letters');
             return;
         }
 
-        const curWord = curArr.join('');
-
         // animation start
         const firstLetterId = stackCount * 5 + 1;
         const interval = 200;
         curArr.forEach((letter, index) => {
-            setTimeout(() => {
-                const color = getColor(letter, index);
+            const color = getColor(letter, index);
 
+            setTimeout(() => {
                 const letterId = firstLetterId + index;
                 const letterEl = document.getElementById(letterId);
                 letterEl.classList.add('animate__flipInX');
                 letterEl.style = `background-color: ${color}; border-color: ${color}`;
             }, interval * index);
+
+            const keyboardColor = document.getElementById(letter);
+            keyboardColor.style = `background-color: ${color}`;
         });
 
         stackCount++;
