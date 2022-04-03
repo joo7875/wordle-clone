@@ -34,15 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // onPress
-    document.addEventListener('keypress', (e) => {
+    document.addEventListener('keydown', (e) => {
         const key = e.key;
 
-        if (key === 'enter') {
+        if (key === 'Enter') {
             handleSubmit();
             return;
         }
 
-        if (key === 'del') {
+        if (key === 'Backspace') {
             handleDelete();
             return;
         }
