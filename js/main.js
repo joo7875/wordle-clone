@@ -36,6 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // onPress
     document.addEventListener('keydown', (e) => {
         const key = e.key;
+        const code = e.keyCode;
+        
+        const isAlphabet = code > 64 && code < 91;
 
         if (key === 'Enter') {
             handleSubmit();
@@ -47,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        updateGuessedWords(key);
+        if (isAlphabet) updateGuessedWords(key);
     });
 
     // update color
