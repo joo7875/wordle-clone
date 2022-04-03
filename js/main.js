@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const GRAY = 'gray';
     const YELLOW = 'rgb(181, 159, 59)';
     const GREEN = 'rgb(83, 141, 78)';
+    const WHITE = 'white';
 
     let stack = [[]];
     let availableSpace = 1;
@@ -86,11 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 letterEl.classList.add('animate__flipInX');
 
                 if (letterEl.style.backgroundColor !== GREEN)
-                    letterEl.style = `background-color: ${color}; border-color: ${color}`;
+                    letterEl.style = `background-color: ${color}; border-color: ${color}; color: ${WHITE}`;
             }, interval * index);
 
             const keyboardColor = document.getElementById(letter);
-            keyboardColor.style = `background-color: ${color}`;
+            keyboardColor.style = `background-color: ${color}; color: ${WHITE}`;
         });
 
         stackCount++;
