@@ -81,7 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const letterId = firstLetterId + index;
                 const letterEl = document.getElementById(letterId);
                 letterEl.classList.add('animate__flipInX');
-                letterEl.style = `background-color: ${color}; border-color: ${color}`;
+
+                if (letterEl.style.backgroundColor !== GREEN)
+                    letterEl.style = `background-color: ${color}; border-color: ${color}`;
             }, interval * index);
 
             const keyboardColor = document.getElementById(letter);
