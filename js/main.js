@@ -102,6 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (stack.length === 6) window.alert(`Sorry, you have no more guesses! The word is ${WORD}.`);
 
         stack.push([]);
+
+        console.log(firstLetterId, stackCount, availableSpace, stack)
     }
 
     // del
